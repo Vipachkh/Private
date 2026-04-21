@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STCraf | Vintage Modern Cafe</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Playfair Display for Vintage English / Prompt for Modern Thai -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Prompt:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for Custom Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            white: '#F9F6F0',   // Warm Off-White
+                            orange: '#D46F4D',  // Vintage Burnt Orange
+                            brown: '#5E3D2C',   // Classic Wood/Coffee Brown
+                            dark: '#3A261D',    // Deep Brown for text
+                            light: '#FFFDF9'    // Purest warm white
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Prompt"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F9F6F0;
+            color: #3A261D;
+        }
+
+        /* Custom image overlay for vintage feel */
+        .vintage-overlay {
+            background: linear-gradient(rgba(94, 61, 44, 0.4), rgba(212, 111, 77, 0.3));
+        }
+
+        /* Hide scrollbar for gallery */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-brand-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-3xl font-bold text-brand-brown tracking-wider">
+                        ST<span class="text-brand-orange">Craf</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home"
+                        class="text-brand-dark hover:text-brand-orange font-medium transition-colors">หน้าแรก</a>
+                    <a href="#about"
+                        class="text-brand-dark hover:text-brand-orange font-medium transition-colors">เรื่องราวของเรา</a>
+                    <a href="#menu"
+                        class="text-brand-dark hover:text-brand-orange font-medium transition-colors">เมนูแนะนำ</a>
+                    <a href="#gallery"
+                        class="text-brand-dark hover:text-brand-orange font-medium transition-colors">บรรยากาศ</a>
+                    <a href="#contact"
+                        class="px-6 py-2 border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-brand-white rounded-full font-medium transition-all duration-300">
+                        จองโต๊ะ
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-brown focus:outline-none">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-white border-t border-brand-brown/10">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home"
+                    class="block px-3 py-2 text-brand-dark hover:bg-brand-orange/10 hover:text-brand-orange rounded-md font-medium">หน้าแรก</a>
+                <a href="#about"
+                    class="block px-3 py-2 text-brand-dark hover:bg-brand-orange/10 hover:text-brand-orange rounded-md font-medium">เรื่องราวของเรา</a>
+                <a href="#menu"
+                    class="block px-3 py-2 text-brand-dark hover:bg-brand-orange/10 hover:text-brand-orange rounded-md font-medium">เมนูแนะนำ</a>
+                <a href="#gallery"
+                    class="block px-3 py-2 text-brand-dark hover:bg-brand-orange/10 hover:text-brand-orange rounded-md font-medium">บรรยากาศ</a>
+                <a href="#contact"
+                    class="block px-3 py-2 mt-4 text-center bg-brand-orange text-brand-white rounded-md font-medium">จองโต๊ะ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop"
+                alt="STCraf Cafe Interior" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 vintage-overlay"></div>
+            <div class="absolute inset-0 bg-brand-dark/40"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <h2 class="font-serif text-brand-orange text-xl md:text-2xl font-medium tracking-widest mb-4">EST. 2026</h2>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                ดื่มด่ำความคลาสสิก<br>ในวิถี<span class="font-serif italic text-brand-orange">โมเดิร์น</span>
+            </h1>
+            <p class="text-brand-white/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto drop-shadow">
+                ยินดีต้อนรับสู่ STCraf คาเฟ่ที่ผสานกลิ่นอายวินเทจและความเรียบหรูของยุคสมัยใหม่
+                พร้อมเสิร์ฟกาแฟคราฟต์และเบเกอรี่โฮมเมดในทุกวันของคุณ
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#menu"
+                    class="px-8 py-4 bg-brand-orange text-brand-white rounded-full font-medium text-lg hover:bg-brand-brown hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    ดูเมนูของเรา
+                </a>
+                <a href="#contact"
+                    class="px-8 py-4 bg-transparent border-2 border-brand-white text-brand-white rounded-full font-medium text-lg hover:bg-brand-white hover:text-brand-brown transition-all duration-300 transform hover:-translate-y-1">
+                    ติดต่อเรา
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Image Collage -->
+                <div class="w-full lg:w-1/2 relative">
+                    <div
+                        class="relative z-10 rounded-t-[100px] rounded-b-lg overflow-hidden border-4 border-brand-white shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1975&auto=format&fit=crop"
+                            alt="Coffee Pouring" class="w-full h-[500px] object-cover" />
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -right-10 w-2/3 rounded-lg overflow-hidden border-4 border-brand-white shadow-2xl z-20 hidden md:block">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop"
+                            alt="Coffee Beans" class="w-full h-[300px] object-cover" />
+                    </div>
+                    <!-- Decorative Shape -->
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-orange/20 rounded-full blur-2xl -z-10"></div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2 space-y-6">
+                    <div class="inline-flex items-center space-x-2">
+                        <span class="w-12 h-[2px] bg-brand-orange"></span>
+                        <span class="text-brand-orange font-medium tracking-wider uppercase">Our Story</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-brown leading-tight">
+                        ศิลปะแห่งการชง <br>และมนต์เสน่ห์เหนือกาลเวลา
+                    </h2>
+                    <p class="text-brand-dark/80 text-lg leading-relaxed">
+                        ที่ <span class="font-serif font-bold text-brand-orange">STCraf</span>
+                        เราเชื่อว่ากาแฟหนึ่งแก้วคือศิลปะที่ต้องใช้เวลาและความใส่ใจ
+                        เราพิถีพิถันตั้งแต่การคัดเลือกเมล็ดกาแฟสายพันธุ์ดี คั่วอย่างมีศิลปะ
+                        ไปจนถึงการสกัดด้วยความแม่นยำในสไตล์โมเดิร์น
+                    </p>
+                    <p class="text-brand-dark/80 text-lg leading-relaxed">
+                        บรรยากาศร้านถูกออกแบบมาเพื่อให้คุณได้หลีกหนีจากความวุ่นวาย โทนสีน้ำตาลไม้อันอบอุ่น
+                        ตัดกับสีส้มและสีขาวสะอาดตา สร้างพื้นที่ที่เหมาะทั้งสำหรับการนั่งทำงานเงียบๆ
+                        หรือพูดคุยแลกเปลี่ยนแรงบันดาลใจกับคนรู้ใจ
+                    </p>
+                    <div class="pt-6">
+                        <div class="flex items-center gap-8">
+                            <div>
+                                <h4 class="font-serif text-3xl font-bold text-brand-orange">10+</h4>
+                                <p class="text-sm text-brand-dark">เมล็ดกาแฟพรีเมียม</p>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-3xl font-bold text-brand-orange">100%</h4>
+                                <p class="text-sm text-brand-dark">โฮมเมดเบเกอรี่</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Menu Section -->
+    <section id="menu" class="py-20 md:py-32 bg-brand-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center justify-center space-x-2 mb-4">
+                    <span class="w-8 h-[2px] bg-brand-orange"></span>
+                    <span class="text-brand-orange font-medium tracking-wider uppercase">Signature Menu</span>
+                    <span class="w-8 h-[2px] bg-brand-orange"></span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-brown mb-6">เมนูแนะนำจากเรา</h2>
+                <p class="text-brand-dark/70 text-lg">สัมผัสรสชาติอันเป็นเอกลักษณ์ที่รังสรรค์ขึ้นอย่างพิถีพิถัน
+                    เพื่อประสบการณ์ที่ดีที่สุดของคุณ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Menu Item 1 -->
+                <div
+                    class="group bg-brand-light rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-brand-brown/5">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=2070&auto=format&fit=crop"
+                            alt="Orange Espresso"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <div
+                            class="absolute top-4 right-4 bg-brand-white text-brand-orange font-bold px-4 py-1 rounded-full text-sm shadow-md">
+                            Recommend</div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3
+                            class="text-xl font-serif font-bold text-brand-brown mb-2 group-hover:text-brand-orange transition-colors">
+                            STCraf Orange Espresso</h3>
+                        <p class="text-brand-dark/70 mb-4 text-sm">เอสเพรสโซ่ช็อตเข้มข้น ผสานความสดชื่นจากน้ำส้มคั้นสด
+                            ท็อปด้วยโรสแมรี่เพิ่มความหอมละมุน</p>
+                        <span class="text-lg font-medium text-brand-orange border-b border-brand-orange pb-1">฿
+                            120</span>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div
+                    class="group bg-brand-light rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-brand-brown/5 mt-0 md:mt-8">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop"
+                            alt="Vintage Dirty Coffee"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3
+                            class="text-xl font-serif font-bold text-brand-brown mb-2 group-hover:text-brand-orange transition-colors">
+                            Vintage Dirty</h3>
+                        <p class="text-brand-dark/70 mb-4 text-sm">นมเย็นจัดสูตรพิเศษ ราดด้วยช็อตเอสเพรสโซ่ร้อนๆ ค่อยๆ
+                            ซึมผ่านชั้นนม ได้รสสัมผัสที่แตกต่างในทุกคำ</p>
+                        <span class="text-lg font-medium text-brand-orange border-b border-brand-orange pb-1">฿
+                            110</span>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div
+                    class="group bg-brand-light rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-brand-brown/5">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1623334044303-241021148842?q=80&w=2070&auto=format&fit=crop"
+                            alt="Classic Croissant"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3
+                            class="text-xl font-serif font-bold text-brand-brown mb-2 group-hover:text-brand-orange transition-colors">
+                            Classic Butter Croissant</h3>
+                        <p class="text-brand-dark/70 mb-4 text-sm">ครัวซองต์เนยฝรั่งเศสแท้ อบสดใหม่ทุกวัน กรอบนอกนุ่มใน
+                            หอมกรุ่นทานคู่กับกาแฟแก้วโปรด</p>
+                        <span class="text-lg font-medium text-brand-orange border-b border-brand-orange pb-1">฿
+                            85</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#"
+                    class="inline-flex items-center gap-2 text-brand-brown font-medium hover:text-brand-orange transition-colors">
+                    ดูเมนูทั้งหมด <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery/Vibe Section -->
+    <section id="gallery" class="py-20 bg-brand-dark text-brand-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center space-x-2 mb-4">
+                        <span class="w-8 h-[2px] bg-brand-orange"></span>
+                        <span class="text-brand-orange font-medium tracking-wider uppercase">Atmosphere</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold mb-4">บรรยากาศวินเทจโมเดิร์น</h2>
+                    <p class="text-brand-white/70">มุมพักผ่อนที่ออกแบบมาเพื่อคุณ ไม่ว่าจะมาเดี่ยว มาคู่
+                        หรือมากับกลุ่มเพื่อน STCraf พร้อมต้อนรับด้วยความอบอุ่นเสมอ</p>
+                </div>
+                <div class="hidden md:flex gap-4">
+                    <button id="scroll-left"
+                        class="p-3 border border-brand-white/20 rounded-full hover:bg-brand-orange hover:border-brand-orange transition-colors">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button id="scroll-right"
+                        class="p-3 border border-brand-white/20 rounded-full hover:bg-brand-orange hover:border-brand-orange transition-colors">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horizontal Scroll Gallery -->
+        <div class="relative w-full overflow-hidden">
+            <div id="gallery-container"
+                class="flex gap-6 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-8 no-scrollbar snap-x">
+                <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?q=80&w=2070&auto=format&fit=crop"
+                    alt="Cafe Table"
+                    class="w-80 h-96 md:w-[400px] md:h-[500px] object-cover rounded-xl flex-none snap-center opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                <img src="https://images.unsplash.com/photo-1501339817309-1d61f569dbd2?q=80&w=2070&auto=format&fit=crop"
+                    alt="Vintage Decor"
+                    class="w-80 h-96 md:w-[400px] md:h-[500px] object-cover rounded-xl flex-none snap-center opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                <img src="https://images.unsplash.com/photo-1495474472205-51a77bc01309?q=80&w=2070&auto=format&fit=crop"
+                    alt="Coffee Setup"
+                    class="w-80 h-96 md:w-[400px] md:h-[500px] object-cover rounded-xl flex-none snap-center opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=2071&auto=format&fit=crop"
+                    alt="Barista"
+                    class="w-80 h-96 md:w-[400px] md:h-[500px] object-cover rounded-xl flex-none snap-center opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop"
+                    alt="Cafe Window"
+                    class="w-80 h-96 md:w-[400px] md:h-[500px] object-cover rounded-xl flex-none snap-center opacity-80 hover:opacity-100 transition-opacity duration-300" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer id="contact" class="bg-brand-brown text-brand-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-1">
+                    <a href="#" class="font-serif text-4xl font-bold tracking-wider mb-6 block text-brand-white">
+                        ST<span class="text-brand-orange">Craf</span>
+                    </a>
+                    <p class="text-brand-white/70 mb-6 font-light leading-relaxed">
+                        คาเฟ่สไตล์วินเทจโมเดิร์น เสิร์ฟกาแฟคราฟต์คุณภาพและเบเกอรี่ทำสดใหม่ในบรรยากาศอบอุ่นเป็นกันเอง
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-brand-dark flex items-center justify-center hover:bg-brand-orange transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-brand-dark flex items-center justify-center hover:bg-brand-orange transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-brand-dark flex items-center justify-center hover:bg-brand-orange transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-serif text-xl font-semibold mb-6 text-brand-orange">ติดต่อเรา</h4>
+                    <ul class="space-y-4 text-brand-white/80">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-orange mt-1 flex-shrink-0"></i>
+                            <span>123 ถนนสุขุมวิท แขวงคลองตัน<br>เขตคลองเตย กรุงเทพฯ 10110</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-orange flex-shrink-0"></i>
+                            <span>02-XXX-XXXX</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-orange flex-shrink-0"></i>
+                            <span>hello@stcrafcafe.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours -->
+                <div>
+                    <h4 class="font-serif text-xl font-semibold mb-6 text-brand-orange">เวลาเปิดให้บริการ</h4>
+                    <ul class="space-y-4 text-brand-white/80">
+                        <li class="flex justify-between border-b border-brand-white/10 pb-2">
+                            <span>จันทร์ - ศุกร์</span>
+                            <span>07:30 - 18:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-brand-white/10 pb-2">
+                            <span>เสาร์ - อาทิตย์</span>
+                            <span>08:30 - 19:00</span>
+                        </li>
+                        <li class="flex justify-between pb-2 text-brand-orange">
+                            <span>วันหยุดนักขัตฤกษ์</span>
+                            <span>เปิดให้บริการปกติ</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-serif text-xl font-semibold mb-6 text-brand-orange">รับข่าวสาร</h4>
+                    <p class="text-brand-white/70 mb-4 text-sm">ลงทะเบียนเพื่อรับโปรโมชั่นพิเศษและข่าวสารเมนูใหม่จากเรา
+                    </p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="อีเมลของคุณ"
+                            class="bg-brand-dark border border-brand-white/20 text-brand-white px-4 py-3 rounded-lg focus:outline-none focus:border-brand-orange placeholder-brand-white/40">
+                        <button type="submit"
+                            class="bg-brand-orange hover:bg-brand-white hover:text-brand-dark text-brand-white px-4 py-3 rounded-lg font-medium transition-colors">
+                            ติดตาม
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-brand-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-brand-white/50 text-sm">
+                <p>&copy; 2026 STCraf Cafe. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-brand-orange transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-orange transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-brand-white/90', 'bg-brand-white');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-brand-white', 'bg-brand-white/90');
+            }
+        });
+
+        // Gallery Horizontal Scroll Buttons
+        const galleryContainer = document.getElementById('gallery-container');
+        const scrollLeftBtn = document.getElementById('scroll-left');
+        const scrollRightBtn = document.getElementById('scroll-right');
+
+        if (scrollLeftBtn && scrollRightBtn && galleryContainer) {
+            scrollLeftBtn.addEventListener('click', () => {
+                galleryContainer.scrollBy({ left: -400, behavior: 'smooth' });
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                galleryContainer.scrollBy({ left: 400, behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+
+</html>
