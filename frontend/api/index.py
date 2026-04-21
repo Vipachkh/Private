@@ -19,9 +19,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include the routers under the /api prefix
-app.include_router(router, prefix="/api")
+# Include the routers (Vercel already handles the /api prefix)
+app.include_router(router)
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to VibeCafe Backend API"}
+    return {"message": "Welcome to VibeCafe Backend API (Serverless)"}
