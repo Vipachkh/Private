@@ -1,5 +1,11 @@
+import sys
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Handle path for Vercel serverless environment
+sys.path.append(os.path.dirname(__file__))
+
 from routers import router
 
 app = FastAPI(title="VibeCafe API")
